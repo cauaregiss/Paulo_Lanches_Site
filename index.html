@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Paulo Lanches</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffeaa7 100%);
+            color: #2d3436;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #d62828, #ff6b6b);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        header nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            padding: 60px 8%;
+            gap: 40px;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: #d62828;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .hero-features span {
+            background: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+            transition: transform 0.3s;
+        }
+
+        .hero-features span:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-content button {
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #d62828, #ff6b6b);
+            border: none;
+            border-radius: 40px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(214,40,40,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-content button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(214,40,40,0.5);
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .burger-placeholder {
+            font-size: 10rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            header nav {
+                display: flex;
+                gap: 15px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.4rem;
+            }
+
+            .burger-placeholder {
+                font-size: 7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>🍔 Paulo Lanches</h1>
+        <nav>
+            <a href="#hero">Início</a>
+            <a href="Cardápio.html">Cardápio</a>
+            <a href="Contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h2>🍔 O Melhor X-Tudo de Belford Roxo 🍟</h2>
+            <p>
+                Descubra o sabor que conquista no <strong>Paulo Lanches</strong>.
+                Um cardápio completo com combinações especiais, ingredientes frescos
+                e aquele lanche caprichado que reúne toda a família 😋
+            </p>
+
+            <div class="hero-features">
+                <span>🥬 Ingredientes Frescos</span>
+                <span>⏱️ Preparo Rápido</span>
+                <span>⭐ Melhor da Região</span>
+            </div>
+
+            <button id="btnCardapio">Ver Cardápio Completo</button>
+        </div>
+
+        <div class="hero-image">
+            <div class="burger-placeholder">🍔</div>
+        </div>
+    </section>
+
+    <script>
+        // Botão ir para o cardápio
+        document.getElementById('btnCardapio').addEventListener('click', () => {
+            window.location.href = 'Cardápio.html';
+        });
+
+        // Partículas flutuando no header
+        function createParticle() {
+            const particle = document.createElement('span');
+            particle.style.position = 'absolute';
+            particle.style.width = '6px';
+            particle.style.height = '6px';
+            particle.style.background = 'rgba(255,255,255,0.6)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = '70px';
+            particle.style.animation = 'particle 3s linear forwards';
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => particle.remove(), 3000);
+        }
+
+        setInterval(createParticle, 400);
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes particle {
+                to {
+                    transform: translateY(-100px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+
+</html>
